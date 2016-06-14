@@ -1,7 +1,8 @@
 CC=clang
-CCFLAGS=-O2
+CCFLAGS=-O2 -std=c++11
+LDFLAGS=-lssl -lcrypto -lstdc++
 
 all: passwordhandler
 
 passwordhandler:
-	 gcc `pkg-config --cflags gtk+-3.0` $CCFLAGS -o bin/passwordhandler src/passwordhandler.c `pkg-config --libs gtk+-3.0`
+	 ${CC} -o bin/passhandler src/passhandler.cc `pkg-config gtkmm-3.0 --cflags --libs` ${CCFLAGS} ${LDFLAGS}
